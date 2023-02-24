@@ -1,6 +1,8 @@
-<div class="banner" style="background-image: url(<%= @list.image_url %>)">
+<div class="banner" style="background-image: url('<%= cl_image_tag @list.photo.key %>')">
   <h1><strong><%= @list.name.upcase %></strong></h1>
 </div>
+
+<%= cl_image_tag @list.photo.key, height: 300, width: 400, crop: :fill %>
 
 <div class="d-flex justify-content-center gap-3">
   <%= link_to root_path, class: "btn btn-dark" do %>
