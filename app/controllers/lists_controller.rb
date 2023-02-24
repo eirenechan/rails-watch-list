@@ -13,7 +13,7 @@ class ListsController < ApplicationController
     @list = List.new(list_params)
     @list.image_url = "https://source.unsplash.com/random/800x400/?#{params[:list][:name].downcase}"
     @list.save
-    redirect_to lists_path
+    redirect_to root_path
   end
 
   private
