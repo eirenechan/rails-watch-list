@@ -3,4 +3,15 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
+  resources :lists do
+    resources :bookmarks, only: [:new, :create]
+  end
+
+  resources :bookmarks, only: [:destroy]
+
+# [X] As a user, I can see all my movie lists
+# [X] As a user, I can create a movie list
+# [X] As a user, I can see the details of a movie list
+# [X] As a user, I can bookmark a movie inside a movie list
+# [ ] As a user, I can destroy a bookmark
 end

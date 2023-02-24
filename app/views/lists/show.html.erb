@@ -1,0 +1,32 @@
+<div class="banner" style="background-image: url(<%= @list.image_url %>)">
+  <h1><strong><%= @list.name.upcase %></strong></h1>
+</div>
+
+<div class="d-flex justify-content-center gap-3">
+  <%= link_to lists_path, class: "btn btn-dark" do %>
+    <i data-feather="home"></i>
+  <% end %>
+
+  <%= link_to new_list_bookmark_path(@list), class: "btn btn-dark" do %>
+    <i data-feather="plus-square"></i>
+  <% end %>
+</div>
+
+
+<div class="cards m-5">
+  <% @list.bookmarks.each do |bookmark| %>
+    <div class="card p-4 m-3">
+    <% movie = bookmark.movie %>
+      <h3><strong><%= movie.title %></strong></h3>
+      <h3><i data-feather="star"></i>   <%= movie.rating %></h3>
+      <img src="<%= movie.poster_url %>" alt="Poster">
+      <p><%= movie.overview %></p>
+      <div class="d-flex justify-content-between align-bottom">
+        <h6><i data-feather="message-circle"></i>   <%= bookmark.comment %></h6>
+        <%= link_to bookmark_path(bookmark), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn" do %>
+          <i data-feather="trash-2"></i>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>
